@@ -13,6 +13,14 @@ class CarouselUnitTest extends TestCase
 {
 
   /** @test */
+   public function it_returns_null_when_deleting_a_non_existing_carousel()
+   {
+       $carouselRepo = new CarouselRepository(new Carousel);
+       $delete = $carouselRepo->deleteCarousel();
+       $this->assertNull($delete);
+   }
+
+  /** @test */
     public function it_should_throw_update_error_exception_when_the_carousel_has_failed_to_update()
     {
         $this->expectException(UpdateCarouselErrorException::class);
