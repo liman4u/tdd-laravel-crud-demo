@@ -10,11 +10,32 @@ class CarouselUnitTest extends TestCase
 {
 
   /** @test */
+    public function it_can_update_the_carousel()
+    {
+        $carousel = factory(Carousel::class)->create();
+
+        $data = [
+            'title' => $this->faker->word,
+            'link' => $this->faker->url,
+            'src' => $this->faker->url,
+        ];
+
+        $carouselRepo = new CarouselRepository($carousel);
+        $update = $carouselRepo->updateCarousel($data);
+
+        $this->assertTrue($update);
+        $this->assertEquals($data['title'], $carousel->title);
+        $this->assertEquals($data['link'], $carousel->link);
+        $this->assertEquals($data['src'], $carousel->src);
+    }
+
+
+  /** @test */
   public function it_can_show_the_carousel()
   {
       $carousel = factory(Carousel::class)->create();
 
-      dump($carousel);
+      //dump($carousel);
 
       $carouselRepo = new CarouselRepository(new Carousel);
       $found = $carouselRepo->findCarousel($carousel->id);
