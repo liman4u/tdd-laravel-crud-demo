@@ -7,9 +7,20 @@ use App\Carousels\Carousel;
 use App\Carousels\Repositories\CarouselRepository;
 use App\Carousels\Exceptions\CreateCarouselErrorException;
 use App\Carousels\Exceptions\CarouselNotFoundException;
+use App\Carousels\Exceptions\UpdateCarouselErrorException;
 
 class CarouselUnitTest extends TestCase
 {
+
+  /** @test */
+    public function it_should_throw_update_error_exception_when_the_carousel_has_failed_to_update()
+    {
+        $this->expectException(UpdateCarouselErrorException::class);
+        $carousel = factory(Carousel::class)->create();
+        $carouselRepo = new CarouselRepository($carousel);
+        $data = ['title' => null];
+        $carouselRepo->updateCarousel($data);
+    }
 
   /** @test */
    public function it_should_throw_not_found_error_exception_when_the_carousel_is_not_found()
