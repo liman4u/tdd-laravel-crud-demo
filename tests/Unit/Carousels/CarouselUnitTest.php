@@ -8,10 +8,14 @@ use App\Carousels\Repositories\CarouselRepository;
 
 class CarouselUnitTest extends TestCase
 {
+
   /** @test */
   public function it_can_show_the_carousel()
   {
-      $carousel = factory(Carousel::class)->make();
+      $carousel = factory(Carousel::class)->create();
+
+      dump($carousel);
+
       $carouselRepo = new CarouselRepository(new Carousel);
       $found = $carouselRepo->findCarousel($carousel->id);
 

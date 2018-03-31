@@ -3,6 +3,7 @@ namespace App\Carousels\Repositories;
 
 use App\Carousels\Carousel;
 use App\Carousels\Exceptions\CreateCarouselErrorException;
+use App\Carousels\Exceptions\CarouselNotFoundException;
 use Illuminate\Database\QueryException;
 
 class CarouselRepository
