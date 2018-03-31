@@ -3,13 +3,13 @@
 namespace App\Carousels\Exceptions;
 
 
-class CreateCarouselErrorException extends \Exception
+class CarouselNotFoundException extends \Exception
 {
     /**
      * CustomerNotFoundException constructor.
      */
     public function __construct()
     {
-        parent::__construct('Carousel not created.');
+        parent::__construct('Carousel not found.');
     }
 }

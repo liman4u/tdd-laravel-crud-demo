@@ -6,6 +6,8 @@ use App\Carousels\Exceptions\CreateCarouselErrorException;
 use App\Carousels\Exceptions\CarouselNotFoundException;
 use App\Carousels\Exceptions\UpdateCarouselErrorException;
 use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class CarouselRepository
 {

@@ -6,9 +6,19 @@ use Tests\TestCase;
 use App\Carousels\Carousel;
 use App\Carousels\Repositories\CarouselRepository;
 use App\Carousels\Exceptions\CreateCarouselErrorException;
+use App\Carousels\Exceptions\CarouselNotFoundException;
 
 class CarouselUnitTest extends TestCase
 {
+
+  /** @test */
+   public function it_should_throw_not_found_error_exception_when_the_carousel_is_not_found()
+   {
+       $this->expectException(CarouselNotFoundException::class);
+       $carouselRepo = new CarouselRepository(new Carousel);
+       $carouselRepo->findCarousel(999);
+   }
+
 
     /** @test */
     public function it_should_throw_an_error_when_the_required_columns_are_not_filled()
