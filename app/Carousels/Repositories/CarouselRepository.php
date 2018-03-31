@@ -61,4 +61,13 @@ class CarouselRepository
         }
     }
 
+
+    /**
+   * @return bool
+   */
+   public function deleteCarousel() : bool
+   {
+       return $this->model->delete();
+   }
+
 }

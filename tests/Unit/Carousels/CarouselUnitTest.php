@@ -9,7 +9,19 @@ use App\Carousels\Repositories\CarouselRepository;
 class CarouselUnitTest extends TestCase
 {
 
-  /** @test */
+      /** @test */
+      public function it_can_delete_the_carousel()
+      {
+          $carousel = factory(Carousel::class)->create();
+
+          $carouselRepo = new CarouselRepository($carousel);
+          $delete = $carouselRepo->deleteCarousel();
+
+          $this->assertTrue($delete);
+      }
+
+
+    /** @test */
     public function it_can_update_the_carousel()
     {
         $carousel = factory(Carousel::class)->create();
