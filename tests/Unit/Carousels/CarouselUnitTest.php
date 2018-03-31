@@ -19,10 +19,9 @@ class CarouselUnitTest extends TestCase
 
         $carouselRepo = new CarouselRepository(new Carousel);
         $carousel = $carouselRepo->createCarousel($data);
-
         $this->assertInstanceOf(Carousel::class, $carousel);
         $this->assertEquals($data['title'], $carousel->title);
         $this->assertEquals($data['link'], $carousel->link);
-        $this->assertEquals($data['image_src'], $carousel->src);
+        $this->assertEquals($data['src'], $carousel->src);
     }
 }
