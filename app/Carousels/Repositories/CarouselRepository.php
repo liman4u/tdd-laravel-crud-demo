@@ -30,4 +30,19 @@ class CarouselRepository
         }
     }
 
+
+    /**
+     * @param int $id
+     * @return Carousel
+     * @throws CarouselNotFoundException
+     */
+    public function findCarousel(int $id) : Carousel
+    {
+        try {
+            return $this->model->findOrFail($id);
+        } catch (ModelNotFoundException $e) {
+            throw new CarouselNotFoundException($e);
+        }
+    }
+
 }
