@@ -5,9 +5,18 @@ namespace Tests\Unit\Carousels;
 use Tests\TestCase;
 use App\Carousels\Carousel;
 use App\Carousels\Repositories\CarouselRepository;
+use App\Carousels\Exceptions\CreateCarouselErrorException;
 
 class CarouselUnitTest extends TestCase
 {
+
+    /** @test */
+    public function it_should_throw_an_error_when_the_required_columns_are_not_filled()
+    {
+     $this->expectException(CreateCarouselErrorException::class);
+     $carouselRepo = new CarouselRepository(new Carousel);
+     $carouselRepo->createCarousel([]);
+    }
 
       /** @test */
       public function it_can_delete_the_carousel()
@@ -74,6 +83,8 @@ class CarouselUnitTest extends TestCase
         $this->assertEquals($data['link'], $carousel->link);
         $this->assertEquals($data['src'], $carousel->src);
     }
+
+
 
 
 }
